@@ -1,0 +1,25 @@
+h1{
+    text-align: center;
+}
+h3 {
+    text-align: right;
+}
+.border{
+    border: 2px (srgb r g b); 
+    width: 800px;
+    height: 100px;
+      
+}
+
+h4 { 
+    text-align: top;
+}
+.box {
+    margin-left: 200px ; 
+     margin-top: 200px;
+}
+.main_outline{
+    height:800px;
+    
+    
+}
