@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <!-- list and sublist -->
+
+        <!--unordered list  -->
+        <ul>
+            <li>apple</li>
+            <ul>
+                <li>color: red</li>
+                <li> season: winter</li>
+            </ul>
+            <li>mango</li>
+            <ul>
+                <li>color:yellow </li>
+                <li>season:summer</li>
+            </ul>
+        </ul>
+        <!-- ordered list -->
+        <ol>
+          <li> apple </li>
+            <li>mango </li>
+            <li>grapes</li>
+        </ol>
+    </main>
+    <!-- Table -->
+
+    <table>
+        <caption>
+            student data
+        </caption>
+        
+        <thead>
+            <tr>
+                <th colspan="2"> Information</th>
+            </tr>
+
+        <tr>
+            <th align="center">Name</th>
+            <th>Roll no</th>
+        </tr>
+    </thead>
+     <tbody>
+        <tr>
+            <td>Sangam</td>
+            <td align="center">607</td>
+        </tr>
+    </tbody>
+    </table>
+    <br>
+    <!-- Form -->
+    <h3>Registration Form </h3>
+     <form action="/action.php">
+        <input type="text" placeholder="username">
+        <br><br>
+        <input type="password" placeholder="password">
+        <h3>select your class</h3>
+     </form>
+     
+     <!-- Label -->
+     
+     <label for="101">
+     <input type="radio" value="class XI" name="class" id="101">class XI
+     </label>
+     <br><br>
+     <label for="102">
+     <input type="radio" value="class XII" name="class" id="102">class XII
+    </label>
+    <br>
+
+    <!-- Checkbox -->
+      <h4>select your fav subject</h4>
+    <label for="math">
+    <input type="checkbox" value="math" name="subject" id="101">Math
+    </label>
+     <br>
+    <label for="physics">
+        <input type="checkbox" value="phy" name="subject" id="102">physics
+        </label>
+         <br>
+        <label for="computer">
+            <input type="checkbox" value="com" name="subject" id="103">Computer
+            </label>
+            <br>
+            <label for="Social">
+                <input type="checkbox" value="soc" name="subject" id="104">Social
+                </label>
+                 <br>
+                 <br>
+                   
+                 <!-- dropdown -->
+
+
+                <h4>select your city</h4>
+                  <select name="city">
+                    <option value="butwal"> Butwal</option>
+                    <option value="kathmandu"> Kathmandu</option>
+                    <option value="pokhara"> Pokhara</option>
+                    <option value="palpa"> Palpa</option>
+                   </select>
+                   <br><br>
+                <!-- Text area -->
+
+                <textarea name="feedback" id="101" placeholder="please give the feedback here" rows="5">
+                 </textarea>
+                 <br><br>
+
+                 <!-- submit -->
+                  <input type="submit" value="submit">
+
+</body>
+</html>
