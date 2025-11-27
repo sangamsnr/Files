@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banker's Algorithm - Deadlock Detection</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 20px;
+    }
+    h2 {
+      color: #333;
+      text-align: center;
+    }
+    textarea, input, button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      border: none;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    pre {
+      background: #222;
+      color: #0f0;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Banker's Algorithm for Deadlock Detection</h2>
+
+  <label>Number of Processes:</label>
+  <input type="number" id="processes" value="5">
+
+  <label>Number of Resources:</label>
+  <input type="number" id="resources" value="3">
+
+  <label>Allocation Matrix (rows separated by newline, values by space):</label>
+  <textarea id="allocation" rows="5">0 1 0
+2 0 0
+3 0 2
+2 1 1
+0 0 2</textarea>
+
+  <label>Max Matrix:</label>
+  <textarea id="max" rows="5">7 5 3
+3 2 2
+9 0 2
+2 2 2
+4 3 3</textarea>
+
+  <label>Available Resources (space separated):</label>
+  <input id="available" value="3 3 2">
+
+  <button onclick="bankersAlgorithm()">Run Algorithm</button>
+
+  <h3>Result:</h3>
+  <pre id="output"></pre>
+
+  <script>
+    function bankersAlgorithm() {
+      const n = parseInt(document.getElementById("processes").value);
+      const m = parseInt(document.getElementById("resources").value);
+
+      const allocation = document.getElementById("allocation").value.trim()
+        .split("\n").map(row => row.trim().split(" ").map(Number));
+      const max = document.getElementById("max").value.trim()
+        .split("\n").map(row => row.trim().split(" ").map(Number));
+      const available = document.getElementById("available").value.trim()
+        .split(" ").map(Number);
+
+      const need = Array.from({ length: n }, () => Array(m).fill(0));
+      const finish = Array(n).fill(false);
+      const safeSeq = [];
+      const output = [];
+
+      // Calculate Need matrix
+      for (let i = 0; i < n; i++)
+        for (let j = 0; j < m; j++)
+          need[i][j] = max[i][j] - allocation[i][j];
+
+      output.push("Need Matrix:");
+      need.forEach(row => output.push(row.join(" ")));
+      output.push("\nAvailable: " + available.join(" "));
+
+      let count = 0;
+      while (count < n) {
+        let found = false;
+        for (let p = 0; p < n; p++) {
+          if (!finish[p]) {
+            let canExecute = true;
+            for (let j = 0; j < m; j++) {
+              if (need[p][j] > available[j]) {
+                canExecute = false;
+                break;
+              }
+            }
+            if (canExecute) {
+              for (let k = 0; k < m; k++)
+                available[k] += allocation[p][k];
+              safeSeq.push(`P${p}`);
+              finish[p] = true;
+              found = true;
+              count++;
+              output.push(`Process P${p} executed. New Available: ${available.join(" ")}`);
+            }
+          }
+        }
+        if (!found) {
+          output.push("\n⚠️ System is in DEADLOCK (No Safe Sequence Found)");
+          document.getElementById("output").textContent = output.join("\n");
+          return;
+        }
+      }
+
+      output.push("\n✅ System is in SAFE STATE");
+      output.push("Safe Sequence: " + safeSeq.join(" → "));
+      document.getElementById("output").textContent = output.join("\n");
+    }
+  </script>
+
+</body>
+</html>
