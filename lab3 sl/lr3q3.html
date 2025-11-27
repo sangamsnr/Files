@@ -1,0 +1,28 @@
+<!-- Write a Javascript program to calculate
+  the factorial of a number using a for loop.  -->
+  <!DOCTYPE html>
+<html>
+<head>
+  <title>Factorial Calculator</title>
+</head>
+<body>
+
+  <h2>Factorial Calculator</h2>
+  <h3 id="result"></h3>
+
+  <script>
+
+    let n = parseInt(prompt("Enter a number:"));
+    let factorial = 1;
+
+ 
+    for (let i = 1; i <= n; i++) {
+      factorial *= i;
+    }
+
+    document.getElementById("result").innerText =
+      "The factorial of " + n + " is: " + factorial;
+  </script>
+
+</body>
+</html>

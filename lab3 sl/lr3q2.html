@@ -1,0 +1,35 @@
+<!-- Write a Javascript program to display the multiplication 
+ table of a given number using a while loop.  -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>program to display the multiplication 
+ table of a given number using a while loop.</title>
+ </head>
+ <body>
+     <h1>:the multiplication table </h1> <br/>
+    <p id="inputs"> </p>
+    <div id="process"></div>
+    <p class="world">Result: </p>
+    <p id="result" class="world"></p>
+    <script>
+        var input= Number(prompt("enter the number"));
+        var user = document.getElementById("inputs");    
+        var res = document.getElementById("result");    
+        var process = document.getElementById("process");    
+        var sum = 0;
+        for(var i = 1; i <=10 ;i++){
+                sum = (i )* input;
+                var re = document.createElement("p");
+                re.innerHTML = "Calculating the numbers " + i + " * " + input+ " the value " + sum;
+                process.appendChild(re);
+        }
+        user.innerHTML = "The value user set  = " + input;
+        res.innerHTML = sum;
+        
+    </script>
+ </body>
+ </html>

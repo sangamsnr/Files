@@ -1,0 +1,34 @@
+<!-- Write a Javascript program that takes a number n as input 
+ and prints the sum of numbers from 1 to n using a for loop.  -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prints the sum of numbers from 1 to n</title>
+ </head>
+ <body>
+    <h1>The sum of numbers:</h1> <br/>
+    <p id="inputs"> </p>
+    <div id="process"></div>
+    <p class="world">Result: </p>
+    <p id="result" class="world"></p>
+    <script>
+        var input= Number(prompt("enter the number"));
+        var user = document.getElementById("inputs");    
+        var res = document.getElementById("result");    
+        var process = document.getElementById("process");    
+        var sum = 0;
+        for(var i = 0; i <=input ;i++){
+                sum +=i;
+                var re = document.createElement("p");
+                re.innerHTML = "Calculating the numbers " + i + " the value " + sum;
+                process.appendChild(re);
+        }
+        user.innerHTML = "The value user set  = " + input;
+        res.innerHTML = sum;
+        
+    </script>
+ </body>
+ </html>
