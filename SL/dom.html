@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="demo">this is some <strong>HTML</strong> content</p>
+  <p class="text">this is a paragraph</p>
+  <p class="text">this is another paragraph</p>
+
+  <input type="text" name="username" value="john">
+  <input type="text" name="username" value="jane">
+
+  <img id="myImage" src="">
+
+  <div id="container">
+    this is the container.
+    <p id="child1">Child 1</p>
+    <p id="child2">Child 2</p>
+  </div>
+
+  <button onclick="addNewElement()">Add element</button>
+  <button onclick="removeElement()">Remove element</button>
+  <button id="myButton">Click me</button>
+  <button id = "myButton">Click Me</button>
+  <button id=" removeButton">Remove Click Handle</button>
+  <!-- onBlur -->
+  <input type="text" onblur="alert ('input filed lost focus')"/>
+  onchange 
+  <input type="text" onchange="alert ('Text Field changed!')"/>
+  onclick
+  
+  <form onsubmit="alert('form submitted!');return false">
+    <input type="text" required/>
+    <input type />
+  </form>
+
+
+  <script>
+    // Example with class
+    // let paragraph = document.getElementsByClassName("text");
+    // console.log(paragraph.length);
+    // console.log(paragraph[0].innerHTML);
+
+    // Example with name
+    let inputs = document.getElementsByName("username");
+    console.log(inputs.length);
+    console.log(inputs[0].value);
+
+    // Change paragraph
+    let para = document.getElementById("demo");
+    para.innerHTML = "this is <em>new</em> HTML content!";
+    para.style.color = "blue";
+    para.style.fontSize = "20px";
+    para.style.backgroundColor = "yellow";
+
+    // Add new element
+    function addNewElement() {
+      let newDiv = document.createElement("div");
+      newDiv.innerText = "this is a new element";
+      let container = document.getElementById("container");
+      container.appendChild(newDiv);
+    }
+
+    // Remove element
+    function removeElement() {
+      let container = document.getElementById("container");
+      let child = document.getElementById("child2");
+      if (child) {
+        container.removeChild(child);
+      }
+    }
+
+    // Event listener
+    let button = document.getElementById("myButton");
+    button.addEventListener("click", function () {
+      alert("Button clicked!");
+    });
+   let Button = document.getElementById("my button");
+    let removeButton = document.getElementById("remove Button");
+    function clickHandler(){
+        alert("button clicked!");
+    }
+    button.addEventListener("click",clickHandler);
+    removeButton.addEventListener("click",function(){
+        button.removeEventListener("click",clickHandler);
+        alert("Click handler removed");
+    });
+
+
+
+  </script>
+</body>
+</html>

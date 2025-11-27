@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <h2>Cookie</h2>
+        <input id="name " placeholder="Enter your name">
+        <button onclick="setCookie()">set</button>
+        <button onclick="showcookie()">show</button>
+        <button onclick="delcookie()">Delete</button>
+        <p id="out"></p>
+        <script>
+            function setCookie(){
+                const v= document.getElementbyID('name').value.trim();
+                if(!v) return alert ('Enter a name');
+                // store for 1 day
+                document.cookie="username"+encodeURIComponent(v)+";Max-Age=86400;path=/";
+                document.getElementById('out').innerHTML="set:username" +v;
+            }
+            
+            function showcookie(){
+                const cookie = document.cookie;
+                const m=cookie.split(';').map(s=>s.trim()).find(s=>s.startswith('username'));
+                const value = m? decodeURIComponent(m.split('=').slice(1).join('=')):'(not set)';
+                document.getElementById('out'),innerHTML="All:"+cookies+"<br>username:"+value;
+            }
+             function delCookie(){
+        
+            document.cookie ="username=;Path=/;Expires= Thu,01 Jan 1970 00:00:00 GMT";
+            document.getElementById('out').innerHTML="deleted username cookie.";
+             }
+        </script>
+    </body>
+</html>
